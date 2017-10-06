@@ -1,0 +1,43 @@
+<h2>Show Poi</h2>
+
+<ul>
+
+  <li>
+    <strong>First name:</strong>
+    <%= @poi.first_name %>
+  </li>
+
+  <li>
+    <strong>Last name:</strong>
+    <%= @poi.last_name %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @poi.email %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @poi.status %>
+  </li>
+
+  <li>
+    <strong>Added by role:</strong>
+    <%= @poi.added_by_role %>
+  </li>
+
+  <li>
+    <strong>Added by:</strong>
+    <%= @poi.added_by_id %>
+  </li>
+
+  <li>
+    <strong>Phone:</strong>
+    <%= @poi.phone %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: poi_path(@conn, :edit, @poi) %></span>
+<span><%= link "Back", to: poi_path(@conn, :index) %></span>

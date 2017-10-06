@@ -1,0 +1,38 @@
+<h2>Listing Pois</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Status</th>
+      <th>Added by role</th>
+      <th>Added by</th>
+      <th>Phone</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for poi <- @pois do %>
+    <tr>
+      <td><%= poi.first_name %></td>
+      <td><%= poi.last_name %></td>
+      <td><%= poi.email %></td>
+      <td><%= poi.status %></td>
+      <td><%= poi.added_by_role %></td>
+      <td><%= poi.added_by_id %></td>
+      <td><%= poi.phone %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: poi_path(@conn, :show, poi), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: poi_path(@conn, :edit, poi), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: poi_path(@conn, :delete, poi), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Poi", to: poi_path(@conn, :new) %></span>

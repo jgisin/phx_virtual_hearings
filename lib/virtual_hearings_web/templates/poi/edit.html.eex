@@ -1,0 +1,5 @@
+<h2>Edit Poi</h2>
+
+<%= render "form.html", Map.put(assigns, :action, poi_path(@conn, :update, @poi)) %>
+
+<span><%= link "Back", to: poi_path(@conn, :index) %></span>

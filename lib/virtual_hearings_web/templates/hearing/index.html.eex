@@ -1,0 +1,28 @@
+<h2>Listing Hearings</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Cmr code</th>
+      <th>Date time</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for hearing <- @hearings do %>
+    <tr>
+      <td><%= hearing.cmr_code %></td>
+      <td><%= hearing.date_time %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: hearing_path(@conn, :show, hearing), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: hearing_path(@conn, :edit, hearing), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: hearing_path(@conn, :delete, hearing), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Hearing", to: hearing_path(@conn, :new) %></span>

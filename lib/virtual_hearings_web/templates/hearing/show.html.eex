@@ -1,0 +1,18 @@
+<h2>Show Hearing</h2>
+
+<ul>
+
+  <li>
+    <strong>Cmr code:</strong>
+    <%= @hearing.cmr_code %>
+  </li>
+
+  <li>
+    <strong>Date time:</strong>
+    <%= @hearing.date_time %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: hearing_path(@conn, :edit, @hearing) %></span>
+<span><%= link "Back", to: hearing_path(@conn, :index) %></span>
