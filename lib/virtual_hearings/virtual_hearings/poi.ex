@@ -1,7 +1,7 @@
-defmodule VirtualHearings.App.Poi do
+defmodule VirtualHearings.VirtualHearings.Poi do
   use Ecto.Schema
   import Ecto.Changeset
-  alias VirtualHearings.App.Poi
+  alias VirtualHearings.VirtualHearings.Poi
 
 
   schema "pois" do
@@ -12,7 +12,7 @@ defmodule VirtualHearings.App.Poi do
     field :last_name, :string
     field :phone, :string
     field :status, :integer
-    has_many :attendees, VirtualHearings.App.Attendee
+    has_many :attendees, Attendee
 
     timestamps()
   end

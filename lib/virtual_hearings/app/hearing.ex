@@ -7,6 +7,7 @@ defmodule VirtualHearings.App.Hearing do
   schema "hearings" do
     field :cmr_code, :string
     field :date_time, :date
+    has_many :attendee, VirtualHearings.App.Attendee
 
     timestamps()
   end

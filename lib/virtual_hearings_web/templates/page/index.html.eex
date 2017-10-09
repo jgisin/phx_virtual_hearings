@@ -1,6 +1,0 @@
-<%=  if @current_user do %>
-  <%=  "Logged in as #{@current_user.email}" %>
-  <%= link "Logout", to: session_path(@conn, :delete), method: :delete, class: "button" %>
-<% else %>
-  <%= link "Log In Now", to: session_path(@conn, :new), class: "button" %>
-<% end %>

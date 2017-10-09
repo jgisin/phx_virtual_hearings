@@ -136,4 +136,62 @@ defmodule VirtualHearings.AppTest do
       assert %Ecto.Changeset{} = App.change_hearing(hearing)
     end
   end
+
+  describe "attendees" do
+    alias VirtualHearings.App.Attendee
+
+    @valid_attrs %{}
+    @update_attrs %{}
+    @invalid_attrs %{}
+
+    def attendee_fixture(attrs \\ %{}) do
+      {:ok, attendee} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> App.create_attendee()
+
+      attendee
+    end
+
+    test "list_attendees/0 returns all attendees" do
+      attendee = attendee_fixture()
+      assert App.list_attendees() == [attendee]
+    end
+
+    test "get_attendee!/1 returns the attendee with given id" do
+      attendee = attendee_fixture()
+      assert App.get_attendee!(attendee.id) == attendee
+    end
+
+    test "create_attendee/1 with valid data creates a attendee" do
+      assert {:ok, %Attendee{} = attendee} = App.create_attendee(@valid_attrs)
+    end
+
+    test "create_attendee/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = App.create_attendee(@invalid_attrs)
+    end
+
+    test "update_attendee/2 with valid data updates the attendee" do
+      attendee = attendee_fixture()
+      assert {:ok, attendee} = App.update_attendee(attendee, @update_attrs)
+      assert %Attendee{} = attendee
+    end
+
+    test "update_attendee/2 with invalid data returns error changeset" do
+      attendee = attendee_fixture()
+      assert {:error, %Ecto.Changeset{}} = App.update_attendee(attendee, @invalid_attrs)
+      assert attendee == App.get_attendee!(attendee.id)
+    end
+
+    test "delete_attendee/1 deletes the attendee" do
+      attendee = attendee_fixture()
+      assert {:ok, %Attendee{}} = App.delete_attendee(attendee)
+      assert_raise Ecto.NoResultsError, fn -> App.get_attendee!(attendee.id) end
+    end
+
+    test "change_attendee/1 returns a attendee changeset" do
+      attendee = attendee_fixture()
+      assert %Ecto.Changeset{} = App.change_attendee(attendee)
+    end
+  end
 end

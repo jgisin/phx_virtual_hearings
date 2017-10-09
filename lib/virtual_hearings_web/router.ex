@@ -38,8 +38,13 @@ defmodule VirtualHearingsWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/pois", PoiController
     resources "/hearings", HearingController
+    resources "/attendees", AttendeeController
+  end
+
+  scope "/", VirtualHearingsWeb do
+    pipe_through :protected # Use the default browser stack
+    resources "/pois", PoiController
   end
 
   # Other scopes may use custom stacks.
